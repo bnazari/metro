@@ -70,17 +70,19 @@ foreach($stations as $station)
 			}
 		}
 	}
-		switch((int)$payload[2]){
-			case 0:
-			echo $lines[0];
-			break;
-			case 2:
-			echo $lines[0];
-			break;
-			case 3:
-			$page = (((int)$payload[1]) % count($lines));
-			echo $lines[$page];
-			break;
+//based on the packet recieved from Pebble, it cycles through the lines for that station.
+
+switch((int)$payload[2]){
+	case 0:
+		echo $lines[0];
+		break
+	case 2:
+		echo $lines[0];
+		break;
+	case 3:
+		$page = (((int)$payload[1]) % count($lines));
+		echo $lines[$page];
+		break;
 
 }
 ?>
